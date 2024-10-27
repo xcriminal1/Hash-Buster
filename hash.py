@@ -6,3 +6,60 @@ import requests
 import argparse
 import concurrent.futures
 
+parser = argparse.ArgumentParser()
+parser.add_argument('-s', help='hash', dest='hash')
+parser.add_argument('-f', help='file containing hashes', dest='file')
+parser.add_argument('-d', help='directory containing hashes', dest='dir')
+parser.add_argument('-t', help='number of threads', dest='threads', type=int)
+args = parser.parse_args()
+
+#Colors and shit like that
+end = '\033[0m'
+red = '\033[91m'
+green = '\033[92m'
+white = '\033[97m'
+dgreen = '\033[32m'
+yellow = '\033[93m'
+back = '\033[7;91m'
+run = '\033[97m[~]\033[0m'
+que = '\033[94m[?]\033[0m'
+bad = '\033[91m[-]\033[0m'
+info = '\033[93m[!]\033[0m'
+good = '\033[92m[+]\033[0m'
+
+cwd = os.getcwd()
+directory = args.dir
+file = args.file
+thread_count = args.threads or 4
+
+if directory:
+    if directory[-1] == '/':
+        directory = directory[:-1]
+
+def alpha(hashvalue, hashtype):
+    return False
+
+def beta(hashvalue, hashtype):
+    response = requests.get('https://hashtoolkit.com/reverse-hash/?hash=' + hashvalue).text
+    match = re.search(r'/generate-hash/\?text=(.*?)"', response)
+    if match:
+        return match.group(1)
+    else:
+        return False
+
+def gamma(hashvalue, hashtype):
+    response = requests.get('https://www.nitrxgen.net/md5db/' + hashvalue, verify=False).text
+    if response:
+        return response
+    else:
+        return False
+
+def delta(hashvalue, hashtype):
+    #data = {'auth':'8272hgt', 'hash':hashvalue, 'string':'','Submit':'Submit'}
+    #response = requests.post('http://hashcrack.com/index.php' , data).text
+    #match = re.search(r'<span class=hervorheb2>(.*?)</span></div></TD>', response)
+    #if match:
+    #    return match.group(1)
+    #else:
+    return False
+
