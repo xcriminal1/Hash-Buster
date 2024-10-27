@@ -63,3 +63,20 @@ def delta(hashvalue, hashtype):
     #else:
     return False
 
+def theta(hashvalue, hashtype):
+    response = requests.get('https://md5decrypt.net/Api/api.php?hash=%s&hash_type=%s&email=deanna_abshire@proxymail.eu&code=1152464b80a61728' % (hashvalue, hashtype)).text
+    if len(response) != 0:
+        return response
+    else:
+        return False
+
+print ('''\033[1;97m_  _ ____ ____ _  _    ___  _  _ ____ ___ ____ ____
+|__| |__| [__  |__|    |__] |  | [__   |  |___ |__/
+|  | |  | ___] |  |    |__] |__| ___]  |  |___ |  \  %sv3.0\033[0m\n''' % red)
+
+md5 = [gamma, alpha, beta, theta, delta]
+sha1 = [alpha, beta, theta, delta]
+sha256 = [alpha, beta, theta]
+sha384 = [alpha, beta, theta]
+sha512 = [alpha, beta, theta]
+
