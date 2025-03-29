@@ -1,8 +1,8 @@
 
 <h1 align="center">Why crack hashes when you can bust them?
   <br>
-  
-![demo](https://image.ibb.co/fnXWBe/Screenshot_2018_09_20_14_02_05.png)
+  <img src="./img/runn.png" alt="demo">
+</p>
 
 ## Features
 - Automatic hash type identification
